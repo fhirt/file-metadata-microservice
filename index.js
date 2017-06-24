@@ -1,21 +1,21 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
+const path = require('path');
+const multer = require('multer');
+const upload = multer();
 const PORT = process.env.PORT || 8080;
 
-app.get('/', function (req, res) {
-    var ip = req.headers['x-forwarded-for'] || 
-        req.connection.remoteAddress || 
-        req.socket.remoteAddress ||
-        req.connection.socket.remoteAddress;
-    var lang = req.headers['accept-language'];
-    lang = lang.split(';')[0].split(',')[0];
-    var os = req.headers['user-agent'];
-    os = os.substring(os.indexOf('(')+1, os.indexOf(')'));
-    res.send({
-        "ipaddress": ip,
-        "language": lang,
-        "software": os
-    });
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, './index.html'));
+});
+
+app.post('/show-filesize', upload.single('upFile'), function(req, res) {
+    res.send({'filesize': req.file.size + ' bytes'});
 });
 
 app.listen(PORT, function () {

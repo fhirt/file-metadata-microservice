@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>File Metadata Microservice</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <h1>File Metadata Microservice</h1>
+        <h2>Usage</h2>
+        <p>Upload a file, using the form below, to check the filesize.</p>
+        <form method="POST" action="/show-filesize" enctype="multipart/form-data">
+            choose a file to check: <input type="file" name="upFile" single></input>
+            <input type="submit" value="Submit"></input>   
+        </form>
+    </body>
+</html>
