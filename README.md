@@ -5,3 +5,10 @@ Build a full stack JavaScript app that implements the following User Stories:
 
 
 [link to app](https://fhirt-metadata-microservice.herokuapp.com/)
+
+
+## technologies and tools used
+- node.js
+- heroku
+- github
+- atom
